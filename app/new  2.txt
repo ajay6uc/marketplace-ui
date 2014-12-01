@@ -1,0 +1,2 @@
+<script type="text/javascript" src="lib/bootstrap-3.1.1/js/bootstrap.min.js"></script>
+<script type="text/javascript"  src="lib/angular-ui-router.min.js"></script>	

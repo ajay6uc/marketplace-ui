@@ -1,0 +1,157 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MarketPlace</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Add some nice styling and functionality.  We'll just use Twitter Bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.css">
+</head>
+    
+<script type="text/javascript" src="lib/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="lib/bootstrap-3.1.1/js/bootstrap.min.js"></script>
+<body>
+
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Brand</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Link</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Please sign in</h3>
+                    </div>
+                     <div class="nb_error panel-heading" style="display:none">
+                        <strong>Invalid Username or Password.</strong>
+                     </div>
+                    <div class="register panel-heading" style="display:none">
+                        
+                            <strong>Congratulation you have been registered successfully. </strong><br>Please login to start !</strong>
+                            
+                    </div>
+                     <div class="panel-body">
+      					       <form name="loginform" action="/marketplace/login" method="POST" accept-charset="UTF-8" role="form">
+                                  <fieldset>
+                                      <div class="form-group">
+                                          <input data-bv-notempty data-bv-notempty-message="Email is required" class="form-control auto-focus" placeholder="Email" name="username" type="text" >
+                                      </div>
+                                      <div class="form-group">
+                                          <input class="form-control" data-bv-notempty data-bv-notempty-message="Email is required" placeholder="Password" name="password" type="password" value="">
+                                      </div>
+                                      <div class="checkbox">
+                                          <label>
+                                              <input name="rememberMe" type="checkbox" value="true"> Remember Me
+                                          </label>
+                                      </div>
+                                      <input class="btn btn-lg btn-success btn-block" type="submit" value="Login">
+      								 <input id="redirectTo" type="hidden" name="redirectTo"/>
+                                  </fieldset>
+                      </form>
+                    <div class="bottom-link-wrapper">
+                          <a href="views/resetPassword.html">
+                             Forgot your password?
+                          </a>
+                          <span class="separator">
+                              |
+                          </span>
+                          <a id="register-instead" href="registration.html">
+                              Don't have an account?
+                          </a>
+        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+	
+	 <script>
+      $(document).ready(function() {
+       $('.nb_error').hide();
+        $('.auto-focus:first').focus();
+
+        var errorMatch = location.search.match(/error\=true/);
+        if(errorMatch) {
+          showError();
+        }
+
+        var registerMatch = location.search.match(/register\=true/);
+        if(registerMatch) {
+           $('.nb_error').hide();
+           $('.panel-title').hide();
+           $('.register').show();
+        }
+
+
+        var email = location.search.match(/\?email\=(.*)$/);
+        var userEmail = email && email[1];
+        if(userEmail) {
+          $('#email').val(userEmail);
+        }
+      });
+      function showError(err) {
+        $('.nb_error').show();
+        $('.panel-title').hide();
+        $('.register').hide();
+      }
+     </script>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    
+   <!-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>-->
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+</body>
+</html>
