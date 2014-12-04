@@ -1,5 +1,5 @@
 
-marketPlace.controller('userController', ['$scope', 'userService',  function($scope, userService){
+marketPlace.controller('userController', ['$scope', 'userService', '$state', function($scope, userService, $state){
 
  var teachers = ['ajay', 'vijay'];
  var students = ['nama-haram', 'pappu pager'];
@@ -7,7 +7,6 @@ marketPlace.controller('userController', ['$scope', 'userService',  function($sc
   $scope.user = {};
   
   $scope.user.getUserList = function(){
-
       userService.getUserList().$promise.then(function(userList) {
 
         $scope.user.userList = userList;
